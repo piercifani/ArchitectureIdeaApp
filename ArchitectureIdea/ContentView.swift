@@ -13,23 +13,17 @@ struct ContentView: View {
                 Text("Is Recording: \(model.recordingState.isRecording ? "Yes" : "No")")
                 Spacer().frame(height: 20)
                 Button(model.recordingState.isRecording ? "Stop Recording" : "Start Recording") {
-                    Task {
-                        if !model.recordingState.isRecording {
-                            await model.start()
-                        } else {
-                            await model.stop()
-                        }
+                    if !model.recordingState.isRecording {
+                        model.start()
+                    } else {
+                        model.stop()
                     }
                 }
                 Button("Refresh Devices") {
-                    Task {
-                        await model.refreshDevices()
-                    }
+                    model.refreshDevices()
                 }
                 Button("Clear Devices") {
-                    Task {
-                        await model.clearDevices()
-                    }
+                    model.clearDevices()
                 }
                 List(model.recordingState.devices, id: \.self) { device in
                     Text(device)

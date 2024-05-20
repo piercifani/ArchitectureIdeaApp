@@ -22,19 +22,27 @@ class ContentViewModel {
         return .init(recordingState: mockState, recordingController: recordingController)
     }
     
-    func start() async {
-        await recordingController.startRecording()
+    func start() {
+        Task {
+            await recordingController.startRecording()
+        }
     }
 
-    func stop() async {
-        await recordingController.stopRecording()
+    func stop() {
+        Task {
+            await recordingController.stopRecording()
+        }
     }
     
-    func refreshDevices() async {
-        await recordingController.refreshDevices()
+    func refreshDevices() {
+        Task {
+            await recordingController.refreshDevices()
+        }
     }
     
-    func clearDevices() async {
-        await recordingController.clearDevices()
+    func clearDevices() {
+        Task {
+            await recordingController.clearDevices()
+        }
     }
 }
