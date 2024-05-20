@@ -1,8 +1,10 @@
 import SwiftUI
 import Observation
 
-@Observable class ContentViewModel: ContentViewModelProtocol {
-    @ObservationIgnored private let recordingController: RecordingController
+@Observable class ContentViewModel {
+    
+    @ObservationIgnored
+    private let recordingController: RecordingControllerProtocol
     
     private let recordingState: RecordingState
     
@@ -21,6 +23,13 @@ import Observation
         self.recordingController = recordingController
     }
 
+    static func mockForPreviews() -> ContentViewModel {
+        let mockState = RecordingState()
+        #warning("RecordingController should be mocked here")
+        let recordingController = RecordingController(recordingState: mockState)
+        return .init(recordingState: mockState, recordingController: recordingController)
+    }
+    
     func start() async {
         await recordingController.startRecording()
     }
@@ -36,15 +45,4 @@ import Observation
     func clearDevices() async {
         await recordingController.clearDevices()
     }
-}
-
-extension EnvironmentValues {
-    var contentViewModel: ContentViewModelProtocol? {
-        get { self[ContentViewModelProtocolKey.self] }
-        set { self[ContentViewModelProtocolKey.self] = newValue }
-    }
-}
-
-private struct ContentViewModelProtocolKey: EnvironmentKey {
-    static var defaultValue: ContentViewModelProtocol? = nil
 }

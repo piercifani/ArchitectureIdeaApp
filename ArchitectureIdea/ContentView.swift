@@ -1,13 +1,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.contentViewModel) var ContentViewModel
+    
+    @Environment(ContentViewModel.self)
+    var contentViewModel
     
     var body: some View {
         VStack {
             Text("Hello, world!")
             
-            if let model = ContentViewModel {
+            if let model = ___viewModel {
                 Text("Is Recording: \(model.isRecording ? "Yes" : "No")")
                 Spacer().frame(height: 20)
                 Button(model.isRecording ? "Stop Recording" : "Start Recording") {
@@ -35,15 +37,18 @@ struct ContentView: View {
             }
         }
         .padding()
+        .animation(.default, value: contentViewModel.devices)
+    }
+    
+    /// This is here just to make the diff seem smaller on GitHub
+    private var ___viewModel: ContentViewModel? {
+        return contentViewModel
     }
 }
 
 // Preview
 
-let viewModel = MockContentViewModel()
-
 #Preview {
     ContentView()
-        .environment(\.contentViewModel, viewModel)
+        .environment(ContentViewModel.mockForPreviews())
 }
-

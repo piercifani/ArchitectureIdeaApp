@@ -22,7 +22,7 @@ struct ArchitectureIdeaApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.contentViewModel, contentViewModel)
+                .environment(contentViewModel)
         }
     }
 }

@@ -15,8 +15,6 @@
 		E5AE9C8A2BF8CEAF00642481 /* RecordingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE9C892BF8CEAF00642481 /* RecordingController.swift */; };
 		E5AE9C8C2BF8D09600642481 /* RecordingControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE9C8B2BF8D09600642481 /* RecordingControllerProtocol.swift */; };
 		E5AE9C8F2BF8D32300642481 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE9C8E2BF8D32300642481 /* ContentViewModel.swift */; };
-		E5AE9C9C2BF8F5AD00642481 /* ContentViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE9C9B2BF8F5AD00642481 /* ContentViewModelProtocol.swift */; };
-		E5AE9C9F2BF8F99600642481 /* MockContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE9C9E2BF8F99600642481 /* MockContentViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +28,6 @@
 		E5AE9C892BF8CEAF00642481 /* RecordingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingController.swift; sourceTree = "<group>"; };
 		E5AE9C8B2BF8D09600642481 /* RecordingControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingControllerProtocol.swift; sourceTree = "<group>"; };
 		E5AE9C8E2BF8D32300642481 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
-		E5AE9C9B2BF8F5AD00642481 /* ContentViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModelProtocol.swift; sourceTree = "<group>"; };
-		E5AE9C9E2BF8F99600642481 /* MockContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContentViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +100,6 @@
 		E5AE9C8D2BF8D31500642481 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E5AE9C9D2BF8F98800642481 /* Mocks */,
-				E5AE9C9A2BF8F59500642481 /* Protocols */,
 				E5AE9C8E2BF8D32300642481 /* ContentViewModel.swift */,
 			);
 			path = Models;
@@ -117,22 +111,6 @@
 				E5AE9C8B2BF8D09600642481 /* RecordingControllerProtocol.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		E5AE9C9A2BF8F59500642481 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				E5AE9C9B2BF8F5AD00642481 /* ContentViewModelProtocol.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		E5AE9C9D2BF8F98800642481 /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				E5AE9C9E2BF8F99600642481 /* MockContentViewModel.swift */,
-			);
-			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,12 +184,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5AE9C792BF8CC9E00642481 /* ContentView.swift in Sources */,
-				E5AE9C9C2BF8F5AD00642481 /* ContentViewModelProtocol.swift in Sources */,
 				E5AE9C8A2BF8CEAF00642481 /* RecordingController.swift in Sources */,
 				E5AE9C772BF8CC9E00642481 /* ArchitectureIdeaApp.swift in Sources */,
 				E5AE9C8C2BF8D09600642481 /* RecordingControllerProtocol.swift in Sources */,
 				E5AE9C872BF8CCE300642481 /* RecordingState.swift in Sources */,
-				E5AE9C9F2BF8F99600642481 /* MockContentViewModel.swift in Sources */,
 				E5AE9C8F2BF8D32300642481 /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,7 +323,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ArchitectureIdea/Preview Content\"";
-				DEVELOPMENT_TEAM = FZY7EYGM2X;
+				DEVELOPMENT_TEAM = 4KR73229LR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -374,7 +350,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ArchitectureIdea/Preview Content\"";
-				DEVELOPMENT_TEAM = FZY7EYGM2X;
+				DEVELOPMENT_TEAM = 4KR73229LR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
