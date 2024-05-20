@@ -1,23 +1,15 @@
 import SwiftUI
 import Observation
 
-@Observable class ContentViewModel {
+@Observable
+@MainActor
+class ContentViewModel {
     
     @ObservationIgnored
     private let recordingController: RecordingControllerProtocol
     
-    private let recordingState: RecordingState
+    let recordingState: RecordingState
     
-    var isRecording: Bool {
-        get { recordingState.isRecording }
-        set { }
-    }
-    
-    var devices: [String] {
-        get { recordingState.devices }
-        set { }
-    }
-
     init(recordingState: RecordingState, recordingController: RecordingController) {
         self.recordingState = recordingState
         self.recordingController = recordingController

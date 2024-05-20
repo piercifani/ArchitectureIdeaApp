@@ -4,25 +4,28 @@ import ScreenCaptureKit
 import AVFoundation
 import OSLog
 
-final class RecordingController: NSObject, @unchecked Sendable, AVCaptureVideoDataOutputSampleBufferDelegate, RecordingControllerProtocol {
+actor RecordingController: RecordingControllerProtocol {
     private(set) var recordingState: RecordingState
-
+    
+    private let avFoundationWrapper = AVFoundationWrapper()
+    private var timer: Task<(), Never>!
+    
     init(recordingState: RecordingState) {
         self.recordingState = recordingState
-        
-        super.init() // Call the superclass's initializer
-        
-        setupTimer()
+        Task { [weak self] in
+            await self?.setupTimer()
+        }
     }
     
     private func setupTimer() {
-        Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { [weak self] timer in
-            guard let self = self else { return }
-            Task {
-                print("Refreshing devices from background...")
+        let timer = Task(priority: .utility) { [weak self] in
+            while !Task.isCancelled {
+                guard let self else { return }
                 await self.refreshDevices()
+                try? await Task.sleep(for: .seconds(5))
             }
         }
+        self.timer = timer
     }
     
     func startRecording() async {
@@ -38,11 +41,15 @@ final class RecordingController: NSObject, @unchecked Sendable, AVCaptureVideoDa
         
         let shuffledNameArray = names.shuffled()
         let randomNames = Array(shuffledNameArray.prefix(3))
-        
+                
         await recordingState.updateDevices(randomNames)
     }
     
     func clearDevices() async {
         await recordingState.clearDevices()
+    }
+    
+    class AVFoundationWrapper: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
+        /// TODO: Actually wrap the stuff we need from AVFoundation
     }
 }
